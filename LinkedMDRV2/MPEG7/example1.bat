@@ -1,0 +1,1 @@
+vde.exe -d CL EH -i image1.ppm -o output.xml

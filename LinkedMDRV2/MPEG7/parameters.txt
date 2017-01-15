@@ -1,0 +1,18 @@
+/* CL */
+NumberOfYCoeff 6
+NumberOfCCoeff 3
+/* CST*/
+ColorQuantSize 256
+/* DC */
+ColorSpacePresent 	 0
+ColorQuantizationPresent 0
+VariancePresent	   	 0 
+SpatialCoherency	 1
+/* HT */
+layer   1
+/* SC */
+NumberOfBitplanesDiscarded 0
+NumberOfCoefficients 256
+/* ColorSpace */
+ColorSpace 0
+ColorReferenceFlag 0

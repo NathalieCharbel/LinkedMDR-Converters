@@ -1,0 +1,1 @@
+vde.exe -d CST RS -i image1.ppm -rm mask1.pgm -o out.txt -f 1
