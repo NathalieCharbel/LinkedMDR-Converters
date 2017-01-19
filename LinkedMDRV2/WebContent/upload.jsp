@@ -9,7 +9,8 @@
          	 <input type="hidden" name="row_id" id="row_id"/>
 	         <input type="hidden" name="selected_item_dc" id="selected_item_dc"/>
 	         <input type="hidden" name="selected_item_tei" id="selected_item_tei"/>
-	         <input type="hidden" name="selected_item_mpeg7" id="selected_item_mpeg7"/>
+	         <input type="hidden" name="selected_item_mpeg7-vd" id="selected_item_mpeg7-vd"/>
+	         <input type="hidden" name="selected_item_mpeg7-caliph" id="selected_item_mpeg7-caliph"/>
 	         <input type="hidden" name="selected_item_linkedmdr" id="selected_item_linkedmdr"/>
          	 
          	 <button type="button" class="add-file btn btn-success btn-sm "><i class="glyphicon glyphicon-plus" ></i> Add file</button>

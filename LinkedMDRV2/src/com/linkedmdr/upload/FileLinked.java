@@ -7,7 +7,8 @@ public class FileLinked {
 	private String filePath;
 	private Boolean dc;
 	private Boolean tei;
-	private Boolean mpeg7;
+	private Boolean mpeg7_vd;
+	private Boolean mpeg7_caliph;
 	private Boolean linkedmdr;
 	
 	// Set&Get
@@ -35,11 +36,17 @@ public class FileLinked {
 	public void setTei(Boolean tei) {
 		this.tei = tei;
 	}
-	public Boolean getMpeg7() {
-		return mpeg7;
+	public Boolean getMpeg7Vd() {
+		return mpeg7_vd;
 	}
-	public void setMpeg7(Boolean mpeg7) {
-		this.mpeg7 = mpeg7;
+	public Boolean getMpeg7Caliph() {
+		return mpeg7_caliph;
+	}
+	public void setMpeg7Vd(Boolean mpeg7_vd) {
+		this.mpeg7_vd = mpeg7_vd;
+	}
+	public void setMpeg7Caliph(Boolean mpeg7_caliph) {
+		this.mpeg7_caliph = mpeg7_caliph;
 	}
 	public Boolean getLinkedmdr() {
 		return linkedmdr;

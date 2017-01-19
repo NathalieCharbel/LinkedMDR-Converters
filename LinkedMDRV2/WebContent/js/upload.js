@@ -32,8 +32,14 @@ $(document).ready(function() {
 					 "</div>"+
 					 "<div class='form-check'>"+
 					  "<label class='form-check-label'>"+
-					    "<input type='radio' class='form-check-input mpeg7'  name='standards' id='item_mpeg7_"+row+"' value='mpeg7'>"+
-					    'MPEG-7'+
+					    "<input type='radio' class='form-check-input mpeg7'  name='standards' id='item_mpeg7-vd_"+row+"' value='mpeg7-vd'>"+
+					    'MPEG-7 Visual Descriptors'+
+					  "</label>"+
+					 "</div>"+
+					 "<div class='form-check mpeg7-caliph'>"+
+					  "<label class='form-check-label'>"+
+					    "<input type='radio' class='form-check-input mpeg7'  name='standards' id='item_mpeg7-caliph_"+row+"' value='mpeg7-caliph'>"+
+					    'MPEG-7 Caliph'+
 					  "</label>"+
 					 "</div>"+
 					"</div"+
@@ -85,7 +91,7 @@ $(document).ready(function() {
 			// check extension of the file and hide/show checkboxes
 			var extension = files[i].name.substr( (files[i].name.lastIndexOf('.') +1) );
 			
-			if (extension=="jpg" || extension == "png" || extension =="jpeg"){
+			if (extension=="jpg" || extension=="JPG" || extension == "PNG" || extension == "png" || extension =="jpeg" || extension == "JPEG" || extension=="pdf"){
 				// Enabled/Disabled the standards
 				$(this).closest("tr").find('.tei').prop('disabled',true);
 				$(this).closest("tr").find('.dublincore').prop('disabled',false);
@@ -143,12 +149,14 @@ $(document).ready(function() {
 		var row_id=null;
 		var dc=null;
 	    var tei=null;
-	    var mpeg7=null;
+	    var mpeg7_vd=null;
+	    var mpeg7_caliph=null;
 	    var linkedmdr=null;
 	    
 	    $("#selected_item_dc").val("");
 	    $("#selected_item_tei").val("");
-	    $("#selected_item_mpeg7").val("");
+	    $("#selected_item_mpeg7-vd").val("");
+	    $("#selected_item_mpeg7-caliph").val("");
 	    $("#selected_item_linkedmdr").val("");
 	    
 	    row_id=$(this).closest("tr").find(".input-dl").val();
@@ -167,9 +175,16 @@ $(document).ready(function() {
 			//alert(tei);
 		}
 		
-		if($("#item_mpeg7_"+row_id).is(':checked')){
-			mpeg7=$("#item_mpeg7_"+row_id).val();
-			$("#selected_item_mpeg7").val(mpeg7);
+		if($("#item_mpeg7-vd_"+row_id).is(':checked')){
+			mpeg7_vd=$("#item_mpeg7-vd_"+row_id).val();
+			$("#selected_item_mpeg7-vd").val(mpeg7_vd);
+			//alert(mpeg7);
+			
+		}
+		
+		if($("#item_mpeg7-caliph_"+row_id).is(':checked')){
+			mpeg7_caliph=$("#item_mpeg7-caliph_"+row_id).val();
+			$("#selected_item_mpeg7-caliph").val(mpeg7_caliph);
 			//alert(mpeg7);
 			
 		}

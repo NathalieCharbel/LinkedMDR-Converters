@@ -10,7 +10,6 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import javax.xml.transform.TransformerConfigurationException;
 
 import org.apache.commons.fileupload.FileItem;
@@ -20,7 +19,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.linkedmdr.dc.DublinCore;
-import com.linkedmdr.mpeg7.Mpeg7;
+import com.linkedmdr.mpeg7.Mpeg7_Caliph;
+import com.linkedmdr.mpeg7.Mpeg7_Vd;
 import com.linkedmdr.tei.Tei;
 import com.linkedmdr.upload.FileLinked;
 
@@ -126,9 +126,13 @@ public class SrvMain extends HttpServlet {
 		                	//System.out.println("tei :"+value);
 		                	fileLinked.setTei(true);
 		                }
-		                else if(name.equals("selected_item_mpeg7") && value.equals("mpeg7")){
+		                else if(name.equals("selected_item_mpeg7-vd") && value.equals("mpeg7-vd")){
 		                	//System.out.println("Mpeg7 :"+value);
-		                	fileLinked.setMpeg7(true);
+		                	fileLinked.setMpeg7Vd(true);
+		                }
+		                else if(name.equals("selected_item_mpeg7-caliph") && value.equals("mpeg7-caliph")){
+		                	//System.out.println("Mpeg7 :"+value);
+		                	fileLinked.setMpeg7Caliph(true);
 		                }
 		                else if(name.equals("selected_item_linkedmdr") && value.equals("linkedmdr")){
 		                	//System.out.println("linkedmdr :"+value);
@@ -163,9 +167,15 @@ public class SrvMain extends HttpServlet {
 			tei1.doTei(request,response,fileLinked.getFilePath());
      	}
      	
-     	// MPEG7
-     	if (fileLinked.getMpeg7()!=null && fileLinked.getMpeg7()==true){
-	     	Mpeg7 mpeg7 = new Mpeg7();
+     	// MPEG7-Vd
+     	if (fileLinked.getMpeg7Vd()!=null && fileLinked.getMpeg7Vd()==true){
+	     	Mpeg7_Vd mpeg7 = new Mpeg7_Vd();
+			mpeg7.doMPEG7(request,response,fileLinked.getFilePath(), fileLinked.getFileName());
+     	}
+     	
+     	// MPEG7-Caliph
+     	if (fileLinked.getMpeg7Caliph()!=null && fileLinked.getMpeg7Caliph()==true){
+	     	Mpeg7_Caliph mpeg7 = new Mpeg7_Caliph();
 			mpeg7.doMPEG7(request,response,fileLinked.getFilePath(), fileLinked.getFileName());
      	}
 

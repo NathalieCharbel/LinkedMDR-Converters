@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Mpeg7 {
+public class Mpeg7_Vd {
 	
 	    // Name of the Directory which contains the transformed file
 	 	private static final String SAVE_DIR = "uploads";
@@ -28,7 +28,7 @@ public class Mpeg7 {
 	            //System.out.println("savePath"+savePath);
 	            
 				// Run mpeg7 visual descriptors
-				Process process = new ProcessBuilder("C:/Workspace/LinkedMDRV2/MPEG7/vde.exe","-d","SC","DC","HT","EH", "-i",pathFile, "-o",savePath).start();
+				Process process = new ProcessBuilder(appPath+"/MPEG7/vde.exe","-d","SC","DC","HT","EH", "-i",pathFile, "-o",savePath).start();
 				
 				// LinkedMDR Servlet response to the client (force the download)
 				response.setContentType("application/force-download");
@@ -38,6 +38,7 @@ public class Mpeg7 {
 				
 				// Create the attached file
 				File f= new File(savePath);
+				f.createNewFile();
 				
 				// Write the file on the stream
 				FileInputStream inStream = new FileInputStream(f);
