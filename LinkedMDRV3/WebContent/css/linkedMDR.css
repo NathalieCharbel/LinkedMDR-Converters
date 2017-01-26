@@ -1,0 +1,100 @@
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: rgba(210, 210, 210, 0.51);
+}
+
+/*Contents*/
+.content-full {
+	padding: 0px;
+	background-color: #e7e7e7;
+	width:100%;
+}
+
+.content-top {
+	color: white;
+	background-color: rgba(15, 62, 114, 0.77);
+	font-family: oswald;
+	font-size: 10px;
+	padding: 0px;
+	width:100%;
+}
+
+.row-top-design{
+	height:30px;
+}
+.nomAppli>h2 {
+	font-size: 24px;
+}
+
+.content-middle {
+	background-color: rgba(3, 57, 114, 0.11);
+	padding:20px;
+}
+
+
+
+/**Panel**/
+.panel.panel-default.panel-upload {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    width:85%;
+}
+
+.panel.panel-default.panel-standards {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    width:85%;
+}
+
+.panel.panel-default.panel-linkedmdr {
+    margin-bottom: 0px;
+    border-radius: 0px;
+    width:85%;
+}
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: rgba(15, 62, 114, 0.77);
+    color: white;
+    font-size:16px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: rgba(15, 62, 114, 0.77);
+}
+
+li.li-doc2xml {
+    border: solid #edeeef 1px;
+    border-radius: 4px;
+}
+
+li.li-xml2rdf {
+    border: solid #edeeef 1px;
+    border-radius: 4px;
+}
+/**Button**/
+.btn-upload{
+	margin-bottom:10px;
+}
+
+/**Table**/
+
+table.table.table-upload {
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+th{
+    font-size: 14px;
+}
+
+/**Fa icon**/
+.fa {
+	color: #4fb5d1;
+	
+}
+
