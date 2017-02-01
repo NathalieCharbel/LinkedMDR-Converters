@@ -4,7 +4,7 @@
 <div class="container content-top">
 	<div class="row">
 		<div class="logo hidden-xs hidden-sm  col-md-2 col-lg-2">
-			<img src="img/logo.PNG" width="100px"/>
+			<img src="img/Logo3.png" width="70px"/>
 		</div>
 		<div
 			class="nomAppli  col-md-8 col-lg-8 text-center ">

@@ -28,8 +28,7 @@ import org.xml.sax.SAXException;
 
 
 public class LinkedMdr {
-	// Name of the Directory which contains the transformed file
-	private static final String SAVE_DIR = "uploads";
+
 	private String appPath = "uploads";
 	
 	/** Execute the dublin core transformation based on apache tika**/
@@ -37,33 +36,36 @@ public class LinkedMdr {
 		
 		try {
 			
-			 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	         DocumentBuilder builder = factory.newDocumentBuilder();
-	         File fileXML = new File(pathFile);
-	         Document xml = builder.parse(fileXML);
-	         Element root = xml.getDocumentElement();
-	         XPathFactory xpf = XPathFactory.newInstance();
-	         XPath path = xpf.newXPath();
-	         
-	         String expressionDC = "/DCmetadata";
-	         String expressionTEI = "/TEI";
-	         String expressionMPEG7 = "/Mpeg7";
+			// First xpath will be used in order to detect a tag dc, tei, mpeg-7
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder builder = factory.newDocumentBuilder();
+	        // The file in which we are using the request
+	        File fileXML = new File(pathFile);
+	        Document xml = builder.parse(fileXML);
+	        // Root of the document 
+	        Element root = xml.getDocumentElement();
+	        XPathFactory xpf = XPathFactory.newInstance();
+	        XPath path = xpf.newXPath();
+	        
+	        // Tags we want to find
+	        String expressionDC = "/DCmetadata";
+	        String expressionTEI = "/TEI";
+	        String expressionMPEG7 = "/Mpeg7";
 	         
         	// Constructs path of the directory to save uploaded file
 	        appPath = request.getServletContext().getRealPath("");
-  
-	        // Save the transformed file (dc/xml) on the server
-            String savePath = appPath + File.separator + SAVE_DIR + File.separator+ fileName+"";
 	         
+	        // Execute the xpath request, true if the xpath finds the tag
 	        boolean boolDC = (Boolean)path.evaluate(expressionDC, root, XPathConstants.BOOLEAN);
 	        boolean boolTEI = (Boolean)path.evaluate(expressionDC, root, XPathConstants.BOOLEAN);
 	        boolean boolMPEG7 = (Boolean)path.evaluate(expressionDC, root, XPathConstants.BOOLEAN);
 	        
 	        String pathTransformation=null;
 	        
+	        // Apply the xslt
 	        if (boolDC){
 	        	// Transform 
-				pathTransformation = transformationToDC(savePath);
+				pathTransformation = transformationToDC(pathFile);
 	        }
 	        else if (boolTEI){
 	        	
@@ -77,7 +79,7 @@ public class LinkedMdr {
 			response.setContentType("application/force-download");
 			response.setHeader("Content-Transfer-Encoding", "binary");
 			response.setHeader("Content-Type", "application/octet-stream");
-	        // Delete the extension of the current file
+	        // Delete the extension of the current file (in order to rename it)
 	        if (fileName.indexOf(".") > 0){
 	            fileName = fileName.substring(0, fileName.lastIndexOf("."));
 			}
@@ -127,7 +129,6 @@ public class LinkedMdr {
 			//input file
 			Source text = new StreamSource(new File(pathFile));
 			//output file and rewrite
-			
 		    pathTransformation = pathFile+"_linkedmdr.xml";
 	        transformer.transform(text, new StreamResult(new File(pathTransformation)));
 		} catch (TransformerConfigurationException e) {

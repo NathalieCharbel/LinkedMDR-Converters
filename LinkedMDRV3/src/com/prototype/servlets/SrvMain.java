@@ -96,6 +96,7 @@ public class SrvMain extends HttpServlet {
 		                
 		                // Constructs path of the directory to save uploaded file
 		                String savePath = appPath + File.separator + SAVE_DIR + File.separator+ fileName;
+		                System.out.println(savePath);
 		                
 		                // set fileLinked path
 		                fileLinked.setFilePath(savePath);
@@ -160,7 +161,7 @@ public class SrvMain extends HttpServlet {
  		// TEI
      	if (fileLinked.getTei()!=null && fileLinked.getTei()==true ){
 	     	Tei tei1 = new Tei();
-			tei1.doTei(request,response,fileLinked.getFilePath());
+			tei1.doTei(request,response,fileLinked.getFilePath(),fileLinked.getFileName());
      	}
      	
      	// MPEG7-Vd
