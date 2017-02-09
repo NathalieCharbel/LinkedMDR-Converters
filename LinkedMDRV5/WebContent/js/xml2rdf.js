@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var uniqueIdLinkedmdr=0;
 	/** On change file (browse...) **/
+	$("#select_all_linkedmdr").prop( "checked",true );
 	// Get the names of the uploaded files and show row to the table
 	$(document).on('change', '.input-file-2rdf', function() { 
 		uniqueIdLinkedmdr=0;
@@ -13,19 +14,18 @@ $(document).ready(function() {
 				var id=0;
 		    // add  row (browse)
 	   	    var $row = $('<tr>'+
-		    	  //td name
-	   	          "<td class='td-name'>"+files[x].name+"  </td>"+
-	   	          //td standards
+		   	      //td standards
 	   	          '<td>'+
 		          	  "<div class='td-linkedmdr' >"+
 				         "<div class='form-check'>"+
 						  "<label class='form-check-label'>"+
 						    "<input type='checkbox' class='form-check-input linkedmdr' name='linkedmdr' value=''>"+
-						    'LinkedMDR'+
 						  "</label>"+
 						 "</div>"+
 						"</div"+
 		           "</td>"+
+		    	  //td name
+	   	          "<td class='td-name'>"+files[x].name+"  </td>"+
 			          //td actions
 		    	   '<td>' +
 					  '<a href="#" class="button-delete-2rdf btn btn-danger btn-sm">Delete</a>'+
@@ -77,6 +77,27 @@ $(document).ready(function() {
 	/** Modify the "tips" when user click "document to rdf" **/
 	$(document).on('click', '.li-xml2rdf', function() {
 		$(".supported-format-text").text("Supported format: xml/(dc, tei, mpeg-7)");
+	});
+	
+	
+	//select all checkboxes
+	$("#select_all_linkedmdr").change(function(){  //"select all" change 
+	    var status = this.checked; // "select all" checked status
+	    $('.linkedmdr').each(function(){ //iterate all listed checkbox items
+	        this.checked = status; //change ".checkbox" checked status
+	    });
+	});
+
+	$(document).on('change', '.linkedmdr', function() {  //".checkbox" change 
+	    //uncheck "select all", if one of the listed checkbox item is unchecked
+	    if(this.checked == false){ //if this item is unchecked
+	    	$("#select_all_linkedmdr").prop( "checked",false );
+	    }
+	    
+	    //check "select all" if all checkbox items are checked
+	    if ($('.linkedmdr:checked').length == $('.linkedmdr').length ){ 
+	    	$("#select_all_linkedmdr").prop( "checked",true ); //change "select all" checked status to true
+	    }
 	});
 	
 	

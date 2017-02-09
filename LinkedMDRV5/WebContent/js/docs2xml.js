@@ -10,7 +10,13 @@ $(document).ready(function() {
 		
 		// Get file sent by the client
 		var files = ($(this).closest('.input-file')).find("input:file")[0].files;
-
+		// add button...
+		if (files.length>0){
+			$(".btn-add").show();
+		}
+		else {
+			$(".btn-add").hide();
+		}
 		for (var x = 0; x < files.length; x++) {
 		    // add row
 	   	    var $row = $('<tr>'+

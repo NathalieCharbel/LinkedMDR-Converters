@@ -44,12 +44,12 @@
 					    		 <label class='btn btn-sm btn-primary btn-upload'>
 					    			Browse files...<input style='display: none;' class="input-file" name="filesToUpload[]" id="filesToUpload" type="file" accept=".xml" multiple>
 					    		 </label>
-				    		 </div>
-				         <table class="table  table-upload table-2rdf table-striped">
+				    	</div>
+				         <table class="table table-upload table-2rdf table-striped">
 						    <thead>
 						      <tr class="info">
+						        <th> Select all <input type='checkbox' id="select_all_linkedmdr" class='form-check-input' value=''> </th>
 						        <th>File name</th>
-						        <th><i class="fa fa-object-group"></i> LinkedMDR</th>
 						        <th>Actions</th>
 						      </tr>
 						    </thead>

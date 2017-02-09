@@ -195,9 +195,9 @@ public class SrvMain extends HttpServlet {
 					    
 				        String newFileName=fileLinked.getFileName();
 				        // Delete the extension of the file
-				        if (newFileName.indexOf(".") > 0){
+				       /** if (newFileName.indexOf(".") > 0){
 				        	newFileName = newFileName.substring(0, newFileName.lastIndexOf("."));
-						}
+						}**/
 						
 						ZipEntry ze= new ZipEntry(newFileName+"_dublincore.xml");
 						zos.putNextEntry(ze);

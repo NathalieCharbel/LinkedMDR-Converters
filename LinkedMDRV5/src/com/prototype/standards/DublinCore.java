@@ -68,13 +68,18 @@ public class DublinCore {
 			
 			// root elements
 			Document doc = docBuilder.newDocument();
-			Element rootElement = doc.createElement("DCMetadata");
+			Element rootElement = doc.createElement("DCmetadata");
 			doc.appendChild(rootElement);
 			
 			// set attribute to root element
 			Attr attr = doc.createAttribute("xmlns:dc");
 			attr.setValue("http://purl.org/dc/elements/1.1/");
 			rootElement.setAttributeNode(attr);
+			
+			// set attribute to root element
+			Attr attr1 = doc.createAttribute("xmlns:dcterms");
+			attr1.setValue("http://purl.org/dc/terms/");
+			rootElement.setAttributeNode(attr1);
 			
 			// Add Element dc:identifier
 			Element dublinCoreIdentifier = doc.createElement("dc:identifier");
