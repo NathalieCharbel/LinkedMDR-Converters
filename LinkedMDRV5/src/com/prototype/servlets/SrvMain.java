@@ -110,6 +110,7 @@ public class SrvMain extends HttpServlet {
 		                
 		                // Constructs path of the directory to save uploaded file
 		                String savePath = appPath + File.separator + SAVE_DIR + File.separator+ fileName;
+		                System.out.println("APP path:"+appPath);
 		                System.out.println("Save path : "+savePath);
 		                
 		                // set fileLinked path

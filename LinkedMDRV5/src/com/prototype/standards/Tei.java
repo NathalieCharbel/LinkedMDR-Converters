@@ -134,15 +134,13 @@ public class Tei {
 	     				Document doc = builder.parse(new File(pathout)); 
 	     				
 	     				// Find the teiHeader tag
-	     				NodeList nodes = doc.getElementsByTagName("teiHeader");
+	     				NodeList nodes = doc.getElementsByTagName("sourceDesc");
 	     				
 	     				// Add the ident tag with the valueURI (pathfile)
-	     				Text a = doc.createTextNode("URI:"+valueURI); 
-	     				Element p = doc.createElement("sourceDesc");  
+	     				Text a = doc.createTextNode("URI:"+valueURI);  
 	     				Element p1 = doc.createElement("p"); 
 	     				p1.appendChild(a);
-	     				p.appendChild(p1);
-	     				nodes.item(0).insertBefore(p, nodes.item(0).getFirstChild());
+	     				nodes.item(0).insertBefore(p1, nodes.item(0).getFirstChild());
 	     				
 	     				// Save the file
 	     				TransformerFactory transformerFactory = TransformerFactory.newInstance();

@@ -39,8 +39,8 @@ public class Mpeg7_Vd {
 	            //System.out.println("savePath"+savePath);
 	            
 				// Run mpeg7 visual descriptors
-				 Process pr= Runtime.getRuntime().exec(appPath+"/MPEG7/vde.exe -d SC DC HT EH -i " +fileLinked.getFilePath()+" -o "+savePath);
-				 System.out.println(appPath+"/MPEG7/vde.exe -d SC DC HT EH -i"+fileLinked.getFilePath()+"-o"+savePath);
+				 Process pr= Runtime.getRuntime().exec(appPath+"MPEG7/vde.exe -d SC DC HT EH -i " +fileLinked.getFilePath()+" -o "+savePath);
+				 System.out.println(appPath+"MPEG7/vde.exe -d SC DC HT EH -i"+fileLinked.getFilePath()+"-o"+savePath);
 	             try {
 					pr.waitFor();
 				} catch (InterruptedException e1) {
