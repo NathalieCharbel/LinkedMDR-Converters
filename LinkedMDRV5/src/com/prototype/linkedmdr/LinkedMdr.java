@@ -79,6 +79,11 @@ public class LinkedMdr {
 	        	
 	        }
 	        else if (boolMPEG7){
+	        	// Transform 
+				pathTransformation = transformationToMPEG7(fileLinked.getFilePath());
+				
+				// Modify the linkedmdr path of the file
+				fileLinked.setFilePathLinkedMDR(pathTransformation);
 	        	
 	        }
 	      
@@ -151,8 +156,28 @@ public class LinkedMdr {
 	}
 	
 	public String transformationToMPEG7(String pathFile){
+		TransformerFactory factory = TransformerFactory.newInstance();
+		
+		// File xslt
+        Source xslt = new StreamSource(new File(appPath + File.separator +"XSLT/mpeg72rdf.xslt"));
+        Transformer transformer;
+        
         // Path of the transformed file
         String pathTransformation="";
+		try {
+			transformer = factory.newTransformer(xslt);
+			// Input file
+			Source text = new StreamSource(new File(pathFile));
+			// Output file and rewrite
+		    pathTransformation = pathFile+"_linkedmdr.xml";
+	        transformer.transform(text, new StreamResult(new File(pathTransformation)));
+		} catch (TransformerConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return pathTransformation;
 	}
 }

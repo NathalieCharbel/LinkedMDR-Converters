@@ -16,6 +16,8 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
@@ -39,7 +41,7 @@ public class Mpeg7_Vd {
 	            //System.out.println("savePath"+savePath);
 	            
 				// Run mpeg7 visual descriptors
-				 Process pr= Runtime.getRuntime().exec(appPath+"MPEG7/vde.exe -d SC DC HT EH -i " +fileLinked.getFilePath()+" -o "+savePath);
+				 Process pr= Runtime.getRuntime().exec(appPath+"/MPEG7/vde.exe -d SC DC HT EH -i " +fileLinked.getFilePath()+" -o "+savePath);
 				 System.out.println(appPath+"MPEG7/vde.exe -d SC DC HT EH -i"+fileLinked.getFilePath()+"-o"+savePath);
 	             try {
 					pr.waitFor();
@@ -59,7 +61,20 @@ public class Mpeg7_Vd {
 					
 					// Find the mpeg7 tag
 					NodeList nodes = doc.getElementsByTagName("Mpeg7");
+					
+					// Modify attribute xmlns
+					NamedNodeMap attrXLMNS = nodes.item(0).getAttributes();
+					Node nodeAttr = attrXLMNS.getNamedItem("xmlns");
+					nodeAttr.setTextContent("urn:mpeg:mpeg7:schema:2001");
+					
+					// Modify attribute xmlns
+					NamedNodeMap attrXLMNSXSI = nodes.item(0).getAttributes();
+					Node nodeAttr1 = attrXLMNSXSI.getNamedItem("xmlns:xsi");
+					nodeAttr1.setTextContent("http://www.w3.org/2001/XMLSchema-instance");
+					
+					// Add valueURI
 					Text a = doc.createTextNode(valueURI); 
+					
 					
 					// Add MediaUri tag 
 					Element p = doc.createElement("MediaUri"); 
@@ -75,7 +90,7 @@ public class Mpeg7_Vd {
 				    StreamResult result = new StreamResult(savePath);
 				    transformer.transform(source, result);	
 				    
-				    // modify the file path mpeg7vd
+				    // Modify the file path mpeg7vd
 				    fileLinked.setFilePathMpeg7Vd(savePath);
 				} catch (ParserConfigurationException e) {
 					// TODO Auto-generated catch block
