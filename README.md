@@ -1,5 +1,5 @@
 A list of eXtensibleStylesheet Language Transformations (XSLT) processors
-#######################################################################################"
+#######################################################################################
 
 The converters automatically generate instances of LinkedMDR ontology. They transform XML outputs of existing tools and APIs into LinkedMDR RDF instances.
 
